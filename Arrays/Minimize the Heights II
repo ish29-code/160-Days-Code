@@ -1,4 +1,4 @@
-FOR EXAMPLE  ----->  k = 2, arr[] = {1, 5, 8, 10}
+FOR EXAMPLE  ----->  k = 2, arr[] = {1, 5, 8, 10}  ----> {1+k,5-k,8-k,10-k}
 IN THIS WE HAVE TO FIND MIN OF THE DIFFERENCE OF LARGEST AND SMALLEST.
 for this firstly sort the array -----> [1,5,8,10]
 then in result store diff of largest and smallest-----> 10-1----> 9
