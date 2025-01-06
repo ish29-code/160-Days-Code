@@ -1,0 +1,26 @@
+FOR EXAMPLE-----> arr[] = [2, -3, 4, 1, 1, 7]------> 3(IS MESSING)
+IN THIS FIRSTLY SORT THE ARRAY -----> [-3,1,1,2,4,7]
+THEN res=1, IF AND OLNY IF arr[i]==res WE WILL INCREMENT res++;  -3 : nochange, 1 : res=1 , 1 : no change res=1 only , 2 is eqals then res=2 , then 4 we have to break because 4>2;
+AND IF arr[i]>res THEN BREAK;
+AND RETURN RES 
+
+
+
+class Solution {
+    // Function to find the smallest positive number missing from the array.
+    public int missingNumber(int[] arr) {
+        // Your code here
+        Arrays.sort(arr);
+        
+        int res = 1;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==res){
+                res++;
+            }
+            else if(arr[i]>res){
+                break;
+            }
+        }
+        return res;
+    }
+}
