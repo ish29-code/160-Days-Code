@@ -1,0 +1,19 @@
+class Solution {
+    void pushZerosToEnd(int[] arr) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If the element is not zero, 
+        // then place the element at index 'count' and increment 'count'
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                arr[count++] = arr[i]; // Here count is incremented
+            }
+        }
+
+        // Now all non-zero elements have been shifted to front and 'count' is set to the index of the first 0. 
+        // Make all elements 0 from count to end of array.
+        while (count < arr.length) {
+            arr[count++] = 0;
+        }
+    }
+}
