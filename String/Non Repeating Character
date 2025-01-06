@@ -1,0 +1,24 @@
+In this we have to return first non duplicate character,,
+for this firdtly make a map then it will count all frequencies
+then by that frequencies we will check, if the count of one particular element is one or not ,
+if more then 1 and do not have non duplicate then just return '$'
+if have non duplicate then return that character ,(but has to be 1st one)
+
+class Solution {
+    // Function to find the first non-repeating character in a string.
+    static char nonRepeatingChar(String s) {
+        // Your code here
+        Map<Character,Integer> nodup = new HashMap<>();
+        
+        for(char ch : s.toCharArray()){
+            nodup.put(ch,nodup.getOrDefault(ch,0)+1);
+        }
+        
+        for(char ch : s.toCharArray()){
+            if(nodup.get(ch)==1){
+                return ch;
+            }
+        }
+        return '$';
+    }
+}
