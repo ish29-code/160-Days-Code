@@ -1,0 +1,19 @@
+FOR EXAMPLE -----> prices[] = [7, 10, 1, 3, 6, 9, 2]
+DOING THIS BY MAX.
+INITILIZE CURRENT MAX AND MAX PROFIT WITH ZERO.
+THEN LOOP FROM i=1 to i<n
+then curr max = (max of 0 and currmax+=price[i]-price[i-1])
+and maxprofit = max of currmax and maxprofit then return maxprofit.
+
+class Solution {
+    public int maximumProfit(int prices[]) {
+        // Code here
+        int maxcurr = 0;
+        int maxprofit = 0;
+        for(int i=1;i<prices.length;i++){
+            maxcurr = Math.max(0,maxcurr+=prices[i]-prices[i-1]);
+            maxprofit = Math.max(maxprofit,maxcurr);
+        }
+        return maxprofit;
+    }
+}
