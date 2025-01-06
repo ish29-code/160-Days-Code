@@ -1,0 +1,20 @@
+FOR EXAMPLE ---> prices[] = [100, 180, 260, 310, 40, 535, 695]
+AT FIRST, INITILIZE RESULT WITH ZERO.
+THEN LOOP FROM I=1 TO PRICES.LENGTH.
+ONLY ADD PRICE WHEN IT PASS THE CONDITION (prices[i]>prices[i-1])
+then add it and return
+
+
+class Solution {
+    public int maximumProfit(int prices[]) {
+        // code here
+        int res = 0;
+        for(int i=1;i<prices.length;i++){
+            if(prices[i]>prices[i-1]){
+                res+=prices[i]-prices[i-1];
+            }
+        }
+        return res;
+        
+    }
+}
