@@ -1,0 +1,31 @@
+FOR EXAMPLE  ----->  k = 2, arr[] = {1, 5, 8, 10}
+IN THIS WE HAVE TO FIND MIN OF THE DIFFERENCE OF LARGEST AND SMALLEST.
+for this firstly sort the array -----> [1,5,8,10]
+then in result store diff of largest and smallest-----> 10-1----> 9
+then loop i=1 to i<n,
+then max = max of arr[i-1]+k , arr[n-1]-k,-----> (3,8) max is 8
+then min = min of arr[0]+k , arr[i]-k ---> (3,3) min is 3
+if min<0 continue;
+return min of result and max-min;
+
+
+class Solution {
+    int getMinDiff(int[] arr, int k) {
+        // code here
+         int n=arr.length;
+        Arrays.sort(arr);
+        int result=arr[n-1]-arr[0];
+        for(int i=1;i<n;i++){
+            int max=Math.max(arr[i-1]+k,arr[n-1]-k);
+            int min=Math.min(arr[0]+k,arr[i]-k);
+            
+            if(min<0){ 
+                continue;
+                
+            }
+            result=Math.min(result,max-min);
+            
+        }
+        return result ;
+    }
+}
