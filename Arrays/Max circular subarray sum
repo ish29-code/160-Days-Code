@@ -1,0 +1,44 @@
+FOR EXAMPLE------> arr[] = [8, -8, 9, -9, 10, -11, 12] -----> 22
+in this firstly initilizing total sum ---> sum of toal array
+max stores max of currsum and max (same for min)
+currmax stores max of currmax+arr[i] , arr[i] (same for currmin)
+then normal sum is max when there is no condition for circular
+and circularsum = totalsum - min
+but if min is equals to totalsum then return normalsum
+if not then return max of circularsum and normalsum.
+
+
+
+class Solution {
+
+    // a: input array
+    // n: size of array
+    // Function to find maximum circular subarray sum.
+    public int circularSubarraySum(int arr[]) {
+
+        // Your code here
+        int totalsum=0;
+        int max = arr[0];
+        int min = arr[0];
+        int currmax=0;
+        int currmin=0;
+        
+        for(int i=0;i<arr.length;i++){
+            currmax = Math.max(currmax+arr[i],arr[i]);
+            max = Math.max(max,currmax);
+            
+            currmin = Math.min(currmin+arr[i],arr[i]);
+            min = Math.min(min,currmin);
+            
+            totalsum += arr[i];
+        }
+        int normalsum = max;
+        int circularsum = totalsum-min;
+        
+        if(totalsum==min){
+            return normalsum;
+        }
+        return Math.max(circularsum,normalsum);
+        
+    }
+}
