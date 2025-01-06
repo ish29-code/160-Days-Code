@@ -1,0 +1,23 @@
+FOR EXAMPLE ----> arr[] = [2, 1, 5, 5, 5, 5, 6, 6, 6, 6, 6]
+
+IN THIS MAKE AN LIST TO STORE ANS
+THEN MAKE A MAP TO COUNT FREQUENCIES IN ARRAY -----> [2:1,1:1,5:4,6:5]
+IN THIS COUNT OF 5--->4 AND COUNT OF 6---->5 AND THESE BOTH ARE > N/3
+THEN PUT THIS TWO IN LIST [5,6] IF NOT IN INCREASING FORM THEN SORT IT ALSO BEFORE RETURNING IT.
+
+class Solution{
+    public List<Integer> findMajority(int[] arr){
+        int n = arr.length;
+        List<Integer> list = new ArrayList<>();
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<n;i++){
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+            
+            if(map.get(arr[i])>n/3 && !list.contains(arr[i])){
+                list.add(arr[i]);
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+}
