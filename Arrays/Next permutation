@@ -1,3 +1,10 @@
+arr = [2, 4, 1, 7, 5, 0]
+Firstly, find i (pivot) from last (when arr[i]>=arr[i+1]) in this case we get pivot then,----> here the pivot is (1)
+if i>=0 (1>=0) condition checks then ---> check(arr[j]<=arr[i]) i=2(always) only and j=n-1-----> at 1>=5 (it is not true)
+then in this point i=2 and j=4 then swap i and j -----> [2,4,5,7,1,0](this after swapping) 
+then for reverse (arr,i+1,n-1) ----> (arr,2+1,6-1) ----> (arr,3,5) ----> [7,1,0] --->(after reversing) --->[0,1,7]
+then ans---->[2,4,5,0,1,7]
+
 class Solution {
     void nextPermutation(int[] arr) {
         // code here
