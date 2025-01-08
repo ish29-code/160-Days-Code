@@ -1,3 +1,7 @@
+Input: s1 = "abcd", s2 = "cdab"
+Output: true
+Explanation: After 2 right rotations, s1 will become equal to s2.
+
 class Solution{
     public static int[] countlps(String s2){
         int n = s2.length();
