@@ -1,0 +1,67 @@
+class Solution{
+    public static int[] countlps(String s2){
+        int n = s2.length();
+        int len = 0;
+        int lps[] = new int[n];
+        lps[0] = 0;//----->[0,0,0,0]
+        int i = 1;
+        
+        while(i<n){
+            if(s2.charAt(i)==s2.charAt(len)){
+                len++;
+                lps[i]=len;
+                i++;
+            }
+            else if(len!=0){
+                len=lps[len-1];
+            }
+            else{
+                lps[i] = 0;
+                i++;
+            }
+        }
+        return lps;
+    }
+    public static boolean areRotations(String s1,String s2){
+        /*StringBuilder sb = new StringBuilder(s2);
+        sb.reverse();//----->"badc"
+        
+        String rev_s2 = sb.toString();
+        sb.reverse().append('#').append(rev_s2);
+        
+        String concat_s2 = s1 + '#' + rev_s2;
+        int lps[] = countlps(concat_s2);
+        return (n - lps[concat_s2.length()-1])==1;*/
+        
+        String txt = s1+s1;
+        String pat = s2;
+        int n = txt.length();
+        int m = pat.length();
+        int lps[] =  countlps(pat);
+        
+        int i=0;
+        int j=0;
+        while(i<n){
+            if(pat.charAt(j)==txt.charAt(i)){
+                j++;
+                i++;
+            }
+            if(j==m){
+                return true;
+            }
+            
+            //mismatch
+            else if(i<n && pat.charAt(j)!=txt.charAt(i)){
+                if(j!=0){
+                    j=lps[j-1];
+                }
+                else{
+                    i++;
+                }
+            }
+        }
+        return false;
+        
+        
+    }
+}
