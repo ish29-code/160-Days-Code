@@ -1,0 +1,24 @@
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        // code here
+        int n = a.length;
+        int m = b.length;
+        int neww[] = new int[n+m];
+        int i=0,j=0,index=0;
+        while(i<n && j<m){
+            if(a[i]<b[j]){
+                neww[index++]=a[i++];
+            }
+            else{
+                neww[index++]=b[j++];
+            }
+        }
+        while(i<n){
+            neww[index++]=a[i++];
+        }
+        while(j<m){
+            neww[index++]=b[j++];
+        }
+        return neww[k-1];
+    }
+}
