@@ -1,0 +1,22 @@
+Input: arr[] = [1, 5, 7, -1, 5], target = 6 
+Output: 3
+Explanation: Pairs with sum 6 are (1, 5), (7, -1) and (1, 5). 
+
+
+
+class Solution {
+
+    int countPairs(int arr[], int target) {
+        // Your code here
+        int count = 0;
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            int inarr = target - arr[i];
+            if(map.containsKey(inarr)){
+                count += map.get(inarr);
+            }
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);//with frequency
+        }
+        return count;
+    }
+}
