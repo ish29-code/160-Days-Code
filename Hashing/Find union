@@ -1,0 +1,18 @@
+Input: a[] = [1, 2, 3, 4, 5], b[] = [1, 2, 3]
+Output: 5
+Explanation: Union set of both the arrays will be 1, 2, 3, 4 and 5. So count is 5.
+
+
+class Solution {
+    public static int findUnion(int a[], int b[]) {
+        // code here
+        Set<Integer> set = new HashSet<>();
+        for(int num : a){
+            set.add(num);
+        }
+        for(int num2 : b){
+            set.add(num2);
+        }
+        return set.size();
+    }
+}
