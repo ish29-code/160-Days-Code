@@ -1,0 +1,32 @@
+Input: arr[] = [2, 6, 1, 9, 4, 5, 3]
+Output: 6
+Explanation: The consecutive numbers here are 1, 2, 3, 4, 5, 6. These 6 numbers form the longest consecutive subsquence.
+
+
+class Solution {
+
+    // Function to return length of longest subsequence of consecutive integers.
+    public int longestConsecutive(int[] arr) {
+        // code here
+        if(arr==null || arr.length==0){
+            return 0;
+        }
+        Arrays.sort(arr);//(1,2,3,4,5,6,9)
+        
+        //consecuative means the diff is same and the point where the diff is greater then just break there
+        int count=1;
+        int maxcount=1;
+        for(int i=1;i<arr.length;i++){
+            int diff = arr[i]-arr[i-1];
+            if(diff==1){
+                count++;
+            }
+            else if(diff>1){
+                maxcount = Math.max(maxcount,count);
+                count = 1;
+            }
+        }
+        maxcount = Math.max(maxcount,count);
+        return maxcount;
+    }
+}
