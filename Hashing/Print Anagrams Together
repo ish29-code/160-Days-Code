@@ -1,0 +1,27 @@
+Input: arr[] = ["act", "god", "cat", "dog", "tac"]
+Output: [["act", "cat", "tac"], ["god", "dog"]]
+Explanation: There are 2 groups of anagrams "god", "dog" make group 1. "act", "cat", "tac" make group 2.
+
+class Solution {
+    public ArrayList<ArrayList<String>> anagrams(String[] arr) {
+        // code here
+        Map<String,List<String>> map = new HashMap<>();
+        
+        for(String str : arr){
+            char chararr[] = str.toCharArray();//['c','a','t']
+            Arrays.sort(chararr);//['a','c','t']
+            String sortedarr = new String(chararr);
+            
+            if(!map.containsKey(sortedarr)){
+                map.put(sortedarr,new ArrayList<>());
+            }
+            map.get(sortedarr).add(str);
+        }
+        
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        for(List<String>group : map.values()){
+            result.add(new ArrayList<>(group));
+        }
+        return result;
+    }    
+}
