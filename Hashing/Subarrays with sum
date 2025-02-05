@@ -1,0 +1,24 @@
+Input: arr = [10, 2, -2, -20, 10], k = -10
+Output: 3
+Explaination: Subarrays: arr[0...3], arr[1...4], arr[3...4] have sum exactly equal to -10.
+
+
+class Solution {
+    public int countSubarrays(int arr[], int k) {
+        // code here
+        int count = 0;//basically to count the ans
+        int sum = 0;//addition one by one
+        Map<Integer,Integer> map = new HashMap<>();
+        map.put(0,1);
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];//12
+            
+            if(map.containsKey(sum-k)){//2
+                count+=map.get(sum-k);
+            }
+            map.put(sum,map.getOrDefault(sum,0)+1);//[12]
+            
+        }
+        return count;
+    }
+}
