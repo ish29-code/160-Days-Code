@@ -1,0 +1,83 @@
+Input: arr[] = [-3, -1, -1, 0, 1, 2], target = -2
+Output: 4
+Explanation: Four triplets that add up to -2 are:
+arr[0] + arr[3] + arr[4] = (-3) + 0 + (1) = -2
+arr[0] + arr[1] + arr[5] = (-3) + (-1) + (2) = -2
+arr[0] + arr[2] + arr[5] = (-3) + (-1) + (2) = -2
+arr[1] + arr[2] + arr[3] = (-1) + (-1) + (0) = -2
+
+
+
+class Solution {
+    public int countTriplets(int[] arr, int target) {
+        // Code Here
+        int count=0;
+        int n = arr.length;
+        for(int i=0;i<n-2;i++){
+            
+            int left = i+1;
+            int right = n-1;
+            
+            while(left<right){
+                int sum = arr[left]+arr[right]+arr[i];
+                
+                if(sum <target){
+                    left++;
+                }
+                else if(sum>target){
+                    right--;
+                }
+                else if(sum==target){
+                    int ele1 = arr[left], ele2=arr[right];
+                    int cun1 = 0, cun2 = 0;
+                    
+                    while(left<=right && arr[left]==ele1){
+                        left++;
+                        cun1++;
+                    }
+                    
+                    while(left<=right && arr[right]==ele2){
+                        right--;
+                        cun2++;
+                    }
+                    
+                    if(ele1==ele2){
+                        count += (cun1 *(cun1-1))/2;
+                    }
+                    else{
+                        count += (cun1*cun2);
+                    }
+                    
+                }
+            }
+        }
+        return count;
+        
+        
+        /*int count = 0;
+        int n = arr.length;
+        
+        for(int i=0;i<n-2;i++){
+            int left = i+1;
+            int right = n-1;
+            
+            while(left<right){
+                int sum = arr[i]+arr[left]+arr[right];
+                if(sum==target){
+                    count++;
+                    left++;
+                    right--;
+                }
+                else if(sum<target){
+                    left++;
+                }
+                else{
+                    right--;
+                }
+            }
+        }
+        return count;*/
+        
+        
+    }
+}
